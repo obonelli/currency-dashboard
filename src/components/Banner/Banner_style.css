@@ -1,0 +1,125 @@
+.banner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* Cambiado de initial a space-between */
+  align-items: center;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  background-color: #1a202c;
+  border: 1px solid #636467;
+  border-radius: 5px;
+  width: 95%; /* Cambiado de auto a 95% para cubrir casi toda la hoja */
+  margin: 0 auto; /* Centrar el banner */
+}
+
+.currency-pair-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-right: 20%;
+  text-align: left;
+  color: #ffffff;
+  position: relative;
+  order: -1; /* Añadido para mover el box al principio */
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: left;
+  color: #ffffff;
+  position: relative;
+  flex: 1; /* Añadido para distribuir el espacio entre los elementos */
+  padding-right: 1rem; /* Añadido para dar espacio al separador vertical */
+}
+
+.box:not(:first-child) {
+  margin-left: 1rem;
+}
+
+.date-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: left;
+  color: #ffffff;
+  position: relative;
+  margin-right: 0.5rem;
+  flex: 1; /* Añadido para distribuir el espacio entre los elementos */
+}
+
+.date-container:not(:first-child) {
+  margin-left: 1rem;
+}
+
+.currency-pair-tittle {
+  margin-left: 0.5rem;
+}
+
+.currency-pair {
+  text-align: center;
+}
+
+.exchange-rate {
+  color: #00c497;
+}
+
+h3 {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: normal;
+  color: #818181;
+}
+
+p {
+  margin: 0.5rem 0 0;
+  font-size: 1rem;
+  text-align: right; /* Alineación a la izquierda */
+}
+
+.currency-pair-container {
+  position: relative;
+}
+
+.currency-pair-container::before {
+  content: "";
+  width: 3px;
+  height: 100%;
+  background-color: #48bb78; /* Línea verde */
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.separator {
+  width: 100%;
+  height: 1px;
+  margin-left: 0.5rem;
+  background-color: #ffffff; /* Línea blanca */
+  position: absolute;
+  bottom: 50%;
+  left: 0;
+}
+
+.vertical-separator {
+  content: ""; /* Añadido para que aparezca el separador */
+  width: 1px;
+  height: 100%;
+  background-color: #4f4f4f; /* Color blanco */
+  position: absolute;
+  right: 0; /* Pegado al borde derecho del box */
+  top: 0;
+}
+
+@media (max-width: 768px) {
+  .banner {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .box:not(:first-child) {
+    margin-left: 0;
+    margin-top: 0.5rem;
+  }
+}

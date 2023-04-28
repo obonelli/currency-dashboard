@@ -1,0 +1,18 @@
+.chart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+  }
+  
+  .recharts-cartesian-axis-ticks {
+    font-size: 12px;
+  }
+  
+  .tooltip {
+    background-color: #1a202c;
+    padding: 10px;
+    border-radius: 5px;
+    color: #ffffff;
+  }
+  

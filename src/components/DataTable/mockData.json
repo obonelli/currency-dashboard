@@ -1,0 +1,30 @@
+{
+    "Meta Data": {
+      "1. Information": "Forex Daily Prices (open, high, low, close)",
+      "2. From Symbol": "EUR",
+      "3. To Symbol": "USD",
+      "4. Output Size": "Compact",
+      "5. Last Refreshed": "2022-09-26 13:50:00",
+      "6. Time Zone": "UTC"
+    },
+    "Time Series FX (Daily)": {
+      "2022-09-26": {
+        "1. open": "0.96870",
+        "2. high": "0.97014",
+        "3. low": "0.95501",
+        "4. close": "0.96672"
+      },
+      "2022-09-23": {
+        "1. open": "0.98351",
+        "2. high": "0.98520",
+        "3. low": "0.96640",
+        "4. close": "0.96900"
+      },
+      "2022-09-22": {
+        "1. open": "0.98397",
+        "2. high": "0.99075",
+        "3. low": "0.98050",
+        "4. close": "0.98332"
+      }
+    }
+  }  
