@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import {
   LineChart,
   Line,
@@ -6,6 +6,7 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
+  ResponsiveContainer,
 } from "recharts";
 import { format } from "date-fns";
 
@@ -33,88 +34,79 @@ const formatDate = (dateStr: string) => {
 
 const Chart: React.FC<ChartProps> = ({ currencyId }) => {
   const [chartData, setChartData] = useState<ChartData[]>([]);
-  const [chartWidth, setChartWidth] = useState<number>(0);
 
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetchHistoricData(currencyId);
       const timeSeries = data["Time Series FX (Daily)"];
-    
+
       const chartData: ChartData[] = [];
-    
+
       for (const date in timeSeries) {
         const dailyData = timeSeries[date];
-    
-        chartData.push({
+
+        chartData.unshift({
           date,
           high: dailyData["2. high"],
         });
       }
-    
-      setChartData(chartData.reverse()); // Invierte el orden de las fechas en el gráfico
+
+      setChartData(chartData);
     };
-    
 
     fetchData();
   }, [currencyId]);
 
-  useEffect(() => {
-    const updateChartWidth = () => {
-      const newChartWidth = window.innerWidth * 0.85; // Cambia el valor 0.8 al porcentaje que desees
-      setChartWidth(newChartWidth);
-    };
-
-    updateChartWidth();
-    window.addEventListener("resize", updateChartWidth);
-
-    return () => {
-      window.removeEventListener("resize", updateChartWidth);
-    };
-  }, []);
-
   return (
-    <LineChart
-      width={chartWidth}
-      height={400}
-      data={chartData}
-      margin={{
-        top: 5,
-        right: 30,
-        left: 20,
-        bottom: 5,
+    <div
+      style={{
+        width: "95%",
+        height: 400,
+        background: "black",
+        marginBottom: "2rem",
       }}
-      style={{ backgroundColor: "black" }}
     >
-      <CartesianGrid stroke="#FFF" /> // Cambia el color de las líneas de la
-      cuadrícula a blanco y elimina la propiedad strokeDasharray
-      <XAxis
-        dataKey="date"
-        tickFormatter={formatDate}
-        data-testid="recharts-x-axis"
-        tick={({ x, y, payload, index }) => (
-          <text
-            data-testid="recharts-cartesian-axis-ticks"
-            className="recharts-cartesian-axis-ticks"
-            x={x}
-            y={y + 15}
-            textAnchor="middle"
-            fill="#FFF"
-          >
-            {index % 3 === 0 ? formatDate(payload.value) : ""}
-          </text>
-        )}
-        stroke="#FFF"
-      />
-      <YAxis orientation="right" stroke="#FFF" />
-      <Tooltip />
-      <Line
-        type="monotone"
-        dataKey="high"
-        stroke="#978030"
-        strokeWidth={2}
-        activeDot={{ r: 8 }}
-      />
-    </LineChart>
+      <ResponsiveContainer>
+        <LineChart
+          data={chartData}
+          margin={{
+            top: 5,
+            right: 30,
+            left: 40, // Incrementar el margen izquierdo
+            bottom: 20,
+          }}
+        >
+          <CartesianGrid stroke="white" />
+          <XAxis
+            dataKey="date"
+            tickFormatter={formatDate}
+            data-testid="recharts-x-axis"
+            interval={Math.floor(chartData.length / 6)}
+            tick={({ x, y, payload }) => (
+              <text
+                data-testid="recharts-cartesian-axis-ticks"
+                className="recharts-cartesian-axis-ticks"
+                x={x}
+                y={y + 15}
+                textAnchor="middle"
+                fill="white"
+              >
+                {formatDate(payload.value)}
+              </text>
+            )}
+          />
+          <YAxis orientation="right" stroke="white" />
+          <Tooltip />
+          <Line
+            type="monotone"
+            dataKey="high"
+            stroke="#978030"
+            strokeWidth={2}
+            activeDot={{ r: 8 }}
+          />
+        </LineChart>
+      </ResponsiveContainer>
+    </div>
   );
 };
 
