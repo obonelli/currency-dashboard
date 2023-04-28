@@ -1,15 +1,30 @@
-# Nombre del Proyecto
+# Currency dashboard
 
-Descripción breve del proyecto y sus características principales.
+This challenge involves developing a React GUI that allows users to visualize currency prices, exchange rates, and trends for various currency pairs. The GUI should be developed based on the provided Figma prototype and should adhere to the specifications outlined in this document.
 
-## Requisitos
+## Requirements
 
-- Node.js (versión recomendada: 14.x o superior)
-- npm o yarn
+- Node.js (recommended version: 14.x or higher)
+- npm or yarn
 
-## Instalación
+## Installation
 
-Para instalar las dependencias del proyecto, ejecuta uno de los siguientes comandos, dependiendo de si usas `npm` o `yarn`:
+To install the project dependencies, run one of the following commands depending on whether you're using npm or yarn:
 
 ```bash
 npm install
+```
+## Execution
+
+To run the application, use the following command:
+
+```bash
+npm run dev
+```
+## Testing
+
+To run the application, use the following command:
+
+```bash
+npm run test
+```
