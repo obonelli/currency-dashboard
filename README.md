@@ -23,7 +23,7 @@ npm run dev
 ```
 ## Testing
 
-To run the application, use the following command:
+To test the components of the application, use the following command:
 
 ```bash
 npm run test
