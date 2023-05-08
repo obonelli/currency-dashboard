@@ -23,7 +23,7 @@ describe("Chart component", () => {
 
   test("renders chart with data", async () => {
     render(<Chart currencyId="EURUSD" />);
-    const chartLine = await screen.findByRole("region");
-    expect(chartLine).toBeInTheDocument();
+    const chartContainer = await screen.findByTestId("chart-container");
+    expect(chartContainer).toBeInTheDocument();
   });
 });

@@ -65,6 +65,7 @@ const Chart: React.FC<ChartProps> = ({ currencyId }) => {
         background: "black",
         marginBottom: "2rem",
       }}
+      data-testid="chart-container"
     >
       <ResponsiveContainer>
         <LineChart
@@ -95,13 +96,18 @@ const Chart: React.FC<ChartProps> = ({ currencyId }) => {
               </text>
             )}
           />
-          <YAxis orientation="right" stroke="white" />
+          <YAxis
+            orientation="right"
+            stroke="white"
+            data-testid="chart-y-axis"
+          />
           <Tooltip />
           <Line
             type="monotone"
             dataKey="high"
             stroke="#978030"
             strokeWidth={2}
+            data-testid="chart-line"
             activeDot={{ r: 8 }}
           />
         </LineChart>
